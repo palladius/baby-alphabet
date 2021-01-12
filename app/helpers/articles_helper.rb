@@ -25,4 +25,14 @@ module ArticlesHelper
         end
     end
 
+    def render_varz_in_text_form()
+        ret = "#varz:\n"
+        $INTERESTING_ENV_VARS = %w{OCCASIONAL_MESSAGE MESSAGGIO_OCCASIONALE FQDN PROJECT_ID ALPHABET_DEFAULT_FOLDER HOSTNAME }
+        $INTERESTING_ENV_VARS.each do |env|
+            ret += "#{ env }:\t#{ ENV.fetch env, :boh }\n"
+
+        end
+
+        return ret
+    end
 end

@@ -15,7 +15,19 @@ class ArticlesController < ApplicationController
   def showletter
     _common_variables
     @letter = params[:letter].to_s[0].downcase
+
+      # rendo cambiabile la image base SOLO da show letter :)
+    if params[:image_base] # "ajcarlesso"
+      AlphabetPicture.image_base = params[:image_base] 
+      flash[:alert] = "AlphabetPicture.image_base: Directory changed to @#{params[:image_base] }@."
+    end
   end
+
+  def varz
+    _common_variables
+  end
+  
+#  private:
 
   def _common_variables
     permitted_by_controller = params.permit(:predilige, :cells_per_row, :image_base)
@@ -25,6 +37,7 @@ class ArticlesController < ApplicationController
     $image_base = params[:image_base]
     $image_base = ENV["ALPHABET_DEFAULT_FOLDER"] if $image_base.nil?
     $image_base = "alphabet" if $image_base.nil?
+
 
     $alphabet = ('A'..'Z').to_a
     if params[:alphabet] == 'it'

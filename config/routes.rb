@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get "/alfabeto", to: "articles#alphabet"
 
 
+  get "/varz",  to: "articles#varz"
+#  get "/vertical",   to: "articles#alphabet"
+#  get "/horizontal", to: "articles#alphabet"
+
+
   get "/alphabet/letter/:letter", to: "articles#showletter"
 
   root 'articles#index'

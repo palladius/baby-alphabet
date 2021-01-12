@@ -43,10 +43,10 @@ docker-run-bash: docker-build
 # run a mounted volume version of the container: more error prone as you have the static
 # stuff with mounted upon it the dynamic stuff, but HEY! If you chaneg the code, it runs on dev
 #Amazing stuff...
-#docker-runvol: docker-build
-#	docker run -p 8080:8080 -it $(APPNAME):v$(VERSION) make run
+docker-runvol: docker-build
+	docker run -p 8080:8080 -v $(PWD):/myapp -it --env-file .env $(APPNAME):v$(VERSION) ./entrypoint-8080.sh
 docker-runvol-bash: docker-build
-	docker run -p 8080:8080 -v $(PWD):/myapp -it $(APPNAME):v$(VERSION) bash
+	docker run -p 8080:8080 -v $(PWD):/myapp -it --env-file	.env $(APPNAME):v$(VERSION) bash
 #############################################################################################
 
 

@@ -1,9 +1,13 @@
 class AlphabetPicture # < ActiveRecord::Base
     #self.abstract_class = true
    # @@image_base = $image_base 
-    @@image_base = "vanilla" 
+   @@image_base = "vanilla" # ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla") 
+   #@@image_base = ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla") 
 
     attr_accessor :filename, :size, :nil #, :image_base
+
+    # come la cosa di convenienza che ho messo sorro.. per la classe. NOta mattr = cattr
+    mattr_accessor :image_base
 
     # e.g. filename = "seychelles.jpg"
     def initialize(filename)
