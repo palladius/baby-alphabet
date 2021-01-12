@@ -53,7 +53,11 @@ run-docker:
 
 test: check-conflicts
 # fix these: https://stackoverflow.com/questions/41154015/how-to-prevent-git-from-committing-two-files-with-names-differing-only-in-case
+# -L = --files-without-match
+# https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch
+#it works! echo alphabeto | { grep alphabet && exit 42 ||  :; }
 check-conflicts:
-	find app/assets/ | sort -f | uniq -dic | lolcat
-	echo If you see some output then youre screwed. do NOT commit
-	find app/assets/ | sort -f | uniq -dic | grep alphabet && exit 41
+	find app/assets/ | sort -f | uniq -di | lolcat
+	echo If you see some output then youre screwed. do NOT commit my friend.
+	find app/assets/ | sort -f | uniq -di | { grep alphabet && exit 41 ||  :; }
+	verde Check OK no duplicates in app/assets
