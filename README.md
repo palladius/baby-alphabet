@@ -6,3 +6,20 @@ And available on http://aj-alphabet.palladi.us/ (see Dockerfile for dockerizing 
 
 To use the app, you just need to edit the .env file (TODO: move to .env.dist) and customize a bit the k8s/ file.
 I'm still learning how to kustomize a YAML without recurring to helm which is a bit too overkill IMHO.
+
+<img src="https://github.com/palladius/septober/raw/master/doc/screenshot.jpg" width="300" alt="Screenshot for AJ Alphabet" align='right' />
+
+
+## Code filosofy
+
+This is a completely STATELESS program, it runs with no DB. The only DB is held by the images themselves so I build a lot of complicated logic in the file naming :P
+
+Some examples:
+
+    "barca (boat).jpg" # The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT.
+	
+Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
+
+## Thanks 
+
+* to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
