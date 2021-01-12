@@ -20,6 +20,16 @@ Some examples:
 	
 Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
 
+## Dockerization
+
+Code is perfectly dockerized so you can build and run locally (if you have no Ruby env on your Mac for instance):
+
+    make docker-run
+	
+You can also push as k8s deployment if you have Google credentials (sorry about that - but send me a PR for AWS/Azure deployment, no big deal!)
+You just need to change the project id in `.env`. I also like to use a `kubectl` wrapper around kubectl to make sure i use the right namespace and possibly
+the right cluster! :) Funny enough, due to its homonimity, `./kubectl` inherits autocompletion so you can easily TAB hour way through ./kubectl get pods and so on..
+
 ## Thanks 
 
 * to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
