@@ -8,6 +8,8 @@
 <% render_unless_print_friendly? do %>
     <h1>AJ alphabet</h1>
 <% end %>
+
+
 <table border="<%= table_border %>" style="table-layout:fixed;" class="alphabet-table" >
     <% chunked_letters.each_with_index do |letters_row, row| %>
         <tr>
@@ -17,7 +19,6 @@
             %>
                 <td valign="top" class="alphabet-cell" >
                     <%= render partial: "alphabet_letter", :locals => {:size => maximum_height, :predilige => @predilige, :letter => letter , :ix => ix, :precipuous_photo_paths => alphabet_photo_paths_beginning_with_letter } %>
-                    <%#= yield %>
                 </td>
             <% end %>
         </tr>
@@ -26,14 +27,14 @@
 
 <% render_unless_print_friendly? do %>
 
-<h2>notule</h2>
+    <h2>notule</h2>
 
-@predilige = <%= @predilige  %> <br/>
-Nota: Tabella di dimensioni massime <%= next_line_after_n_elements %><br/>
-RAILS_ENV= <%= Rails.env %><br/>
+    @predilige = <%= @predilige  %> <br/>
+    Nota: Tabella di dimensioni massime <%= next_line_after_n_elements %><br/>
+    RAILS_ENV= <%= Rails.env %><br/>
 
-Todos:
-2. cliccabile la foto e usa DB per scelta di foto migliore :)
+    Todos:
+    2. cliccabile la foto e usa DB per scelta di foto migliore :)
 
 <% end
 # https://stackoverflow.com/questions/1457563/equal-sized-table-cells-to-fill-the-entire-width-of-the-containing-table

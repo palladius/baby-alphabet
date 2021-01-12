@@ -12,6 +12,9 @@ comincia con accorciare la cosa in basso e a metterci l'intera parola con inizia
     end
     
     full_paz=obj.full_path if full_paz.nil?
+    full_paz = "_empty.jpg" if full_paz.to_s == ""
+    full_paz = empty_image_path if obj.nil?
+    #puts "[DEBUG] full_paz=#{full_paz} OBJ=#{obj}"
 %>
 <a href="/alphabet/letter/<%=letter %>%">
 <div class="modulericc2" style="background: url('/assets/<%=full_paz%>'); background-size: 340px 340px;" >

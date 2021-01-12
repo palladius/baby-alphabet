@@ -63,10 +63,10 @@ class AlphabetPicture # < ActiveRecord::Base
     end
 
     def word_in_primary_language # italian
-      bilingual_words[0].capitalize.split(" ").first
+      bilingual_words[0].capitalize.split(" ").first rescue "??"
     end
     def word_in_secondary_language # UK
-      bilingual_words[1].capitalize.split(" ").first
+      bilingual_words[1].capitalize.split(" ").first rescue "??"
     end
 
     def verticality
