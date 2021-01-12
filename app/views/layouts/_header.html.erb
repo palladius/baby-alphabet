@@ -1,0 +1,25 @@
+<div class="header" style="align:center"  > [
+    <a href="/">Home</a> | 
+    <b>alphabet</b>
+    <a href="/alfabeto?predilige=portrait&cells_per_row=6">(Ver6)</a>
+    <a href="/alfabeto?predilige=landscape&cells_per_row=4">(Hor4)</a>
+    Kate's favorite
+    expertiments(
+<% %w{modulericc modulericc2 fittingsquares default }.each do |experiment| %> 
+    <%= link_to experiment, "/alfabeto?predilige=#{experiment}&cells_per_row=5", :class => "experiment"%>
+<% end %>
+    )
+    <!-- <a href="/alfabeto?print_friendly=true">print-friendly</a> -->
+    <%= link_to "Print-Friendly (new!)", params.permit(:print_friendly, :cells_per_row, :predilige).merge({:print_friendly => "true"})  
+    # https://stackoverflow.com/questions/4812169/appending-text-onto-current-url-through-link-in-rails 
+    %>
+        <%= link_to "UK", params.permit(:alphabet, :cells_per_row, :predilige).merge({:alphabet => "uk"}) %>
+        <%= link_to "IT", params.permit(:alphabet, :cells_per_row, :predilige).merge({:alphabet => "it"}) %>
+
+    ] <br/>
+    [
+    <%  $alphabet.each { |letter| %>
+        <%= link_to(letter,"/alphabet/letter/#{letter}") %>
+    <% } %>
+    ]
+</div>

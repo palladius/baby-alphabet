@@ -1,0 +1,40 @@
+<%#= image_tag("alphabet/alessandro-alle-seychelles.png", :height => 180 , :style => "float: right;") %>
+<h1>AJ Alphabet</h1>
+
+<p>Find me in app/views/articles/index.html.erb</p>
+
+<A href="/alfabeto" >Link all'alfabeto portertoso di AJ</a>
+
+by ricc@
+
+
+<h2>Debug foto</h2>
+
+<span style="white-space: pre-line">
+    <%= @alphabet_photo_paths %>
+</span>
+<% @alphabet_photo_paths.each do |paz| 
+%>
+    <%= image_tag("alphabet/"+paz, :height => 80 ) %>
+<% end %>
+
+
+<h3>Prova 3 </h3>
+
+IMG pura con classe 'quadratone' che la inquadra<br/>
+
+    <%#= image_tag("alphabet/alessandro-alle-seychelles.png", :height => 500, :class => "quadratone" ) %>
+    <img src="assets/alphabet/kate.jpg" height="340" class="quadratone" />
+
+
+<h3>Prova 34</h3>
+
+DIV con W*H e overflow hidden<br/>
+
+<% %w{ horizontal vertical}.each do |imagetype| %>
+  <div style="width:250px;height:250px;overflow:hidden">
+      <small><%= imagetype %></small>
+      <img src="assets/<%= imagetype %>.jpg" height="250" width="250" />
+  </div>
+<% end %>
+

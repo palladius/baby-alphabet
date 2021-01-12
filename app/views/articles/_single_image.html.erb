@@ -1,0 +1,24 @@
+<%
+
+  # MAGIA! Siccome ho passato una collection a questo p[artial che si chiama _single_image ha caricato il valore
+  # i-mo della collection dentro a "single_image". BUCIODICULO!
+    photo_path = single_image if  photo_path.nil?
+    pic = AlphabetPicture.new(photo_path)
+
+    buridone_opts = {:predilige => predilige, :letter => letter , :obj => pic }
+
+%>
+<!--
+  <h2><%=photo_path%></h2>
+   
+    Properties: <pre> 
+        ToString:    <%= pic.to_s %>
+    </pre>
+
+<div width="25%" class="per-letter-put-me-aside-chrissake" >
+
+-->
+<div style="height:20rem; width:20%; margin-left:4%; margin-right:0%; float:left; background-color: white;">
+  <%#= render partial: "articles/foto_quadretto/fittingsquares", :locals => buridone_opts %>
+   <%= image_tag("alphabet/"+photo_path, :height => 300 ) %>
+</div>

@@ -1,0 +1,103 @@
+### Created on Do 07 Jan 2021 17:22:01 CET by ./kubernettizza-env-files.sh. go to../ and re call it to refresh data. DO NOT EDIT!
+---
+apiVersion: v1
+data:
+  #COMANDO_DEFAULT: /usr/local/bin/docker-php-entrypoint apache2-foreground
+  # disabled
+  #DEBUG: ""
+  #DEBUG_ON: ""
+  DOCKER_HOST_HOSTNAME: aspirina
+  # # se non funge usiamo FQDN vero :)
+  # FQDN: aj-alphabet.palladi.us
+  # MESSAGGIO_OCCASIONALE: |
+  #   Questo e ora prod, praticamente tutto come prod eccetto il DB cosi posso fare prod e porcate senza SPORCATE :P 
+  # RAILS_ENV: prod
+  # SMTP_PASS: yvnsprjuqemmhnxn"
+  # SMTP_USER: goliardia.it.daemon@gmail.com
+  # TZ: '''Europe/Berlin'''
+  # WEBMASTER_EMAIL: goliardia.it.daemon+webmaster@gmail.com
+kind: ConfigMap
+metadata:
+  name: ajalphabet-env-bifida-prod
+
+---
+
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: ajalphabet-prod-certificate
+spec:
+  domains:
+    - aj-alphabet.palladi.us
+# non va (credo) perche punta a un'immagine che non e'pubblica su palladius..
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ajalphabet-prod-deployment
+spec:
+    selector:
+        matchLabels:
+            app: ajalphabet-prod
+    template:
+        metadata:
+            labels:
+                app: ajalphabet-prod
+        spec: 
+            containers:
+                - name: ajalphabet-prod
+                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
+#                  image: gcr.io/goliardia-prod/aj-alfabeto:v1.3
+                  imagePullPolicy: Always
+                  #command: [ "rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+                  command: [ "make", "run"]
+                  envFrom:
+                    - configMapRef:
+                        name: ajalphabet-env-bifida-prod
+                  env:
+                    # a manhouse aggiunte a sopra
+                  - name: RAILS_ENV
+                    value: development
+#                  - name: MATRIOSKA_VER
+#                    value: "2.10 anche se non e DRY magari prova a fare docker inspect stikazzi del spec/container/image"
+#                  - name: MESSAGGIO_OCCASIONALE
+#                    value: vediamo se lo OverWrita si che lo sovrascrive!!! Eheheh
+#                  - name: DEBUG_ON
+#                    value: TRueeeee # deve essere stringa non buleano
+## 1. Create with: gcloud compute addresses create goliardia-www --global
+## quando fatto, scropti IP con:
+## 2. gcloud compute addresses list 
+## INfine configura DNS in cui mettere l'IP su ccc-wiki: https://console.cloud.google.com/net-services/dns/zones/palladi-us/details?project=ric-cccwiki
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ajalphabet-prod-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: ajalphabet-global-prod
+    ### "https://console.cloud.google.com/networking/addresses/list?hl=it&organizationId=615578690183&project=goliardia-prod"
+    ### ajalphabet-global-prod	34.120.195.77
+    # $ dns-setup-palladius.sh aj-alphabet.palladi.us 34.120.195.77
+    networking.gke.io/managed-certificates: ajalphabet-prod-certificate
+spec:
+  rules:
+  - host: aj-alphabet.palladi.us
+    http:
+      paths:
+      - backend:
+          serviceName: ajalphabet-prod-service
+          servicePort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ajalphabet-prod-service
+spec:
+  type: NodePort
+  selector:
+    app: ajalphabet-prod
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080

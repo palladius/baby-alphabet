@@ -1,0 +1,361 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+
+
+
+
+
+// Tabella di Riccardo
+
+.alphabet-cell {
+  border-spacing: 0px;
+  margin:0px;
+}
+
+
+
+
+// https://stackoverflow.com/questions/15167545/how-to-crop-a-rectangular-image-into-a-square-with-css
+
+// OPZIONE 1.
+
+.thumb1 { 
+    background: url(blah.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+    width: 250px;
+    height: 250px;
+  }
+  
+  .thumb1 a {
+    display: block;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .thumb1 a:hover { 
+      /*YOUR HOVER STYLES HERE*/
+ }
+
+ .letterona {
+   font-weight: bold;
+   color: darkcyan;
+   text-transform: uppercase;
+   font-variant: small-caps; 
+ }
+
+// OPZIONE 2. https://stackoverflow.com/questions/15167545/how-to-crop-a-rectangular-image-into-a-square-with-css
+
+img.quadratone {
+  object-fit: cover;
+  width:250px;
+  height:250px;
+}
+
+
+
+
+
+ /* https://rwt.io/typography-tips/drop-caps-styling-initial-letter
+ */ 
+ p.letterona , h1.letterona ,{
+  font-family: 'Lucida Grande', Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  margin: 2em auto;
+  max-width: 38em;
+  position: relative;
+}
+
+p:first-of-type::first-letter, h1.letterona:first-of-type::first-letter {
+  font-family: Georgia, serif;
+  font-variant: small-caps; 
+
+  float: left;
+  font-size: 3.125em;
+  font-weight: bold;
+  line-height: 0.65;
+  margin: 0;
+  padding: 0.05em 0.1em 0 0;
+}
+
+/* per AJ*/
+h3.letterona:first-of-type::first-letter  {
+  font-family: Georgia, serif;
+  font-variant: small-caps; 
+
+  float: left;
+  font-size: 2.125em;
+  font-weight: bold;
+  line-height: 0.65;
+  margin: 0;
+  padding:  0 0;
+  color: yellow;
+}
+
+h1.letterona, h3.letterona  {
+  color: blue;
+  text-underline-position: initial;
+}
+
+
+/*
+  testyo dentro immagine: https://css-tricks.com/design-considerations-text-images/
+
+  1. molto bello, bianco su nero quadrretto. ugly ma dunzoinale
+*/
+
+.padded-multiline { 
+ /* background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);*/
+  line-height: 1.4; 
+  padding: 120px 50px 50px 50px;
+  width: 400px;
+  margin: 20px auto;
+}
+.padded-multiline span { 
+  background-color: black;
+  color: #fff; 
+  display: inline;
+  padding: 0.5rem;
+  
+  /* Needs prefixing */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+
+
+/* 2. blur figatissima */
+
+.module {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);
+  background-attachment: fixed;
+  width: 400px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+}
+.module > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  background: inherit;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.module > header::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+.module > header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25)
+}
+.module > header > h1 {
+  margin: 0;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+// ah-ah! https://css-tricks.com/box-sizing/ Questo spiega...
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+.modulericc {
+  /*background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);*/
+  background-attachment: fixed;
+  width: 400px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+}
+.modulericc > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  background: inherit;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.modulericc > header::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+.modulericc > header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25)
+}
+.modulericc > header > h1 {
+  margin: 0;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* prove mie da Modulo Ricc 2 */
+
+.modulericc2 {
+  /*background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);*/
+  background-attachment: fixed;
+  width: 400px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  //margin: 0px;
+}
+.modulericc2 > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1px 5px;
+  background: inherit;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.modulericc2 > header::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+.modulericc2 > header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25)
+}
+.modulericc2 > header > h1 {
+  margin: 0;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+/* prove mie da Modulo RiccVert (Accessibile solo da VERTICAL) */
+
+.modulericcvert {
+  background-attachment: fixed;
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  // margin: 20px;
+}
+.modulericcvert > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 10px;
+  background: inherit;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.modulericcvert > header::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+.modulericcvert > header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25)
+}
+.modulericcvert > header > h3 {
+  margin: 0;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/*
+  Questo puo potenzialmente distruggre TUTTO quindi attendo
+
+  
+*/
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  }

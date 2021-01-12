@@ -1,0 +1,4 @@
+
+up:
+	../kubectl apply -f .
+

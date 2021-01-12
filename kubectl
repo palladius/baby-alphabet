@@ -1,0 +1,4 @@
+
+
+#kubectl create namespace aj-alphabet
+echodo kubectl --namespace "aj-alphabet" "$@"

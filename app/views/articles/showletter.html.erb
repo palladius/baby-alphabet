@@ -1,0 +1,63 @@
+<h1>🔤 <%=@letter.capitalize%></h1>
+<%
+  #alphabet_photo_paths_beginning_with_letter = @alphabet_photo_paths.select{|paz| paz.starts_with?(@letter.downcase) }
+  alphabet_photo_paths_beginning_with_letter = AlphabetPicture.findall_by_initial @letter rescue []
+
+%>
+<h2>List of stuff</h2>
+
+  <p>List of <b><%= alphabet_photo_paths_beginning_with_letter.count %></b> people: <%= alphabet_photo_paths_beginning_with_letter.join(", ") %></p>
+
+
+
+
+<h2>Iterating ugly on Modulericc2</h2>
+
+  (tant par fer quelcousa)
+
+  <div style="height:60rem; width:100%; margin: auto;">
+  <% alphabet_photo_paths_beginning_with_letter.each do |paz| %>
+    <div style=" width:33%; height:320px; margin-left:0%; margin-right:0%; float:left; background-color: white;">
+      <%= render partial: "articles/foto_quadretto/modulericc2", :locals => { :obj => AlphabetPicture.new(paz), :letter => @letter }  %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<h2>Iterating collection via fittingsquares</h2>
+
+This iteration is manually by 4 (everything is 25% minus epsilon of rendering )
+
+  <div style="height:40rem; width:100%; margin: auto;">
+        <%= render partial: "single_image", collection: alphabet_photo_paths_beginning_with_letter , :locals => { :predilige => @predilige, :letter => @letter  } %>
+  </div>
+
+
+
+<!--
+
+<div style="height:7rem; width:100%; margin: auto;">
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left; background-color: black;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: black;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: black;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: green;"></div>
+
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left; background-color: yellow;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: yellow;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: yellow;"></div>
+  <div style="height:7rem; width:20%; margin-left:4%; margin-right:0%; float:left;  background-color: yellow;"></div>
+</div>
+-->
+
+
+<!--
+<div width="90%" class="collection-put-me-aside-chrissake" >
+  <div class="removeme-brother-divs" width="50%" >Child div with 50% width, 4px black border, and 1em padding</div>
+  <div class="removeme-brother-divs" width="50%" >Child div with 50% width, 4px black border, and 1em padding</div>
+  <%#= render partial: "single_image", collection: alphabet_photo_paths_beginning_with_letter , :locals => { :predilige => @predilige, :letter => @letter  } %>
+</div>
+<% alphabet_photo_paths_beginning_with_letter.each do |paz| %>
+    <%#= render partial: "single_image", :locals => { :predilige => @predilige, :letter => @letter , :photo_path => paz } %>
+<% end %>
+-->

@@ -1,0 +1,8 @@
+<!-- questo e quello bruttino, lo metto a DFLT -->
+<div class="thumb1 primalettera">
+<!--        <h1 class="padded-multiline"> </h1> -->
+      <%= link_to(image_tag(full_paz, :height => size, 
+                            :alt => "Legend: #{parola}"  ),
+                  "/alphabet/letter/#{letter.downcase}") %>
+      <span class="padded-multiline-riccardo" ><%=letter%></span>
+</div>

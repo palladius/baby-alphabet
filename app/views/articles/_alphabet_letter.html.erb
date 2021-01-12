@@ -1,0 +1,29 @@
+<!-- LETTERA "<%= letter %>" (ix=><%=ix %>) --><%
+  puts "-- precipuous_photo_paths: #{}"
+  filename = precipuous_photo_paths.first # [0]
+  paz = filename 
+  obj = AlphabetPicture.new(paz)
+  #full_paz = "alphabet/#{paz}" # obj.full_path
+  #parola = paz.split(".")[0] # obj.basename
+  full_paz = obj.full_path
+  parola = obj.basename
+  visualization_options = predilige.to_s
+  buridone_opts = {:predilige => predilige, :letter => letter , :filename => filename, :full_paz => full_paz, :size => size, :parola => parola, :obj => obj }
+
+  standard_modules = %w{ modulericc2 modulericc fittingsquares }
+%><!-- MULTIPLE YIELDS! 
+    https://stackoverflow.com/questions/20058412/using-multiple-yields-to-insert-content
+    Mah io ho fatto multipli parzials che faccio prima...
+--><% 
+if %w{portrait landscape}.include? visualization_options%>
+  <!-- uso una sola funzione sia per verticale che orizzontale. So che me ne pentiro ma molta logica e simile ... -->
+  <%= render partial: "articles/foto_quadretto/portrait_or_landscape", :locals => buridone_opts.merge(:verticality => visualization_options) %>
+<% elsif visualization_options == "modulericc2" %>
+  <%= render partial: "articles/foto_quadretto/modulericc2", :locals => buridone_opts %>
+<% elsif visualization_options == "modulericc" %>
+  <%= render partial: "articles/foto_quadretto/modulericc", :locals => buridone_opts %>
+<% elsif visualization_options == "fittingsquares" %>
+  <%= render partial: "articles/foto_quadretto/fittingsquares", :locals => buridone_opts %>
+<% else %>
+  <%= render partial: "articles/foto_quadretto/default", :locals => buridone_opts %>
+<% end %>

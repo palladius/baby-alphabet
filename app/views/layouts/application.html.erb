@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJ Alfabeto</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% render_unless_print_friendly? do %>
+      <%= render "layouts/header" %>
+  <% end %>
+
+    <%= yield %>
+
+  <% render_unless_print_friendly? do %>
+    <hr/>
+    <div class="footer" style="align:center" >
+        AJ Alfabeto v. <%= $VERSION %>
+    </div>
+  <% end %>
+  </body>
+</html>

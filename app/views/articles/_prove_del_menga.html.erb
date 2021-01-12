@@ -1,0 +1,38 @@
+<!-- LETTERA "<%= letter %>" (ix=><%=ix %>) -->
+<%
+  filename = precipuous_photo_paths.first # [0]
+  paz = filename 
+  parola = paz.split(".")[0] 
+  visualize_figata = false
+  visualize_skyscraper = false
+%>
+
+
+  
+<div class="thumb1 primalettera">
+    <h1 class="padded-multiline">
+      <span><%=letter%></span>
+    </h1>
+    <%= link_to(image_tag("alphabet/#{paz}", :height => size, :alt => "Legend: #{parola}" ), "/alphabet/letter/#{letter.downcase}") %>
+</div>
+<% if visualize_figata %>
+  <!-- esperimento 1 -->
+  <p class="primalettera"><%= parola %></p>
+<% end %>
+
+
+<% if visualize_skyscraper %>
+<!-- esperimento 2 = cambio TD per questo -->
+  </td>
+  <td style="background-image: url('alphabet/<%=paz%>');" >
+    prova in un nuovo TD vergine
+    <!-- https://www.w3schools.com/cssref/css3_pr_background-size.asp -->
+    <div class="module" style="background-image: url('assets/alphabet/<%=paz%>'); background-size: 250px 250px; " >
+    foto bis
+      <header>
+            <%=letter%>
+      </header>
+    </div>
+  <% end %>
+
+<!-- esperimenti END -->

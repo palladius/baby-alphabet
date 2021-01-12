@@ -1,0 +1,20 @@
+<%#= image_tag("alphabet/alessandro-alle-seychelles.png", :height => 180 , :style => "float: right;") %>
+<h1>AJ Alphabet</h1>
+
+<p>Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in
+reading any letter of th alphabet and she uirged e to do something about it.
+I said: 'tranquilla, leave it with me' (which is British for <i>hold my beer</i>). 
+24 hours later this application was built. 
+</p>
+
+<p>Please see <a href="/alfabeto?predilige=portrait&cells_per_row=6" >my wife's favorite page</a>.
+</p>
+
+
+<h2>Some pictures..</h2>
+
+<% @alphabet_photo_paths.each do |paz| 
+%>
+    <%= image_tag("alphabet/"+paz, :height => 50 ) %>
+<% end %>
+
