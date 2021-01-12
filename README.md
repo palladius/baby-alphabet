@@ -31,6 +31,12 @@ You can also push as k8s deployment if you have Google credentials (sorry about 
 You just need to change the project id in `.env`. I also like to use a `kubectl` wrapper around kubectl to make sure i use the right namespace and possibly
 the right cluster! :) Funny enough, due to its homonimity, `./kubectl` inherits autocompletion so you can easily TAB hour way through ./kubectl get pods and so on..
 
+Also try:
+
+    make docker-push-to-gcp 
+
+which pushes docker to GCR and then trhough `make up` pushes the GKE cluster to GCP. Since it's always pulling LATEST tag, if you want to refresh it it also gives you a commodity refresh command (basically kill current deployment , in GoT style).
+
 ## Thanks 
 
 * to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
