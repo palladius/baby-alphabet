@@ -4,6 +4,15 @@ VERSION = $(shell cat VERSION)
 PWD = $(shell pwd)
 #SHELL := /bin/bash
 
+
+deps: package.json
+	echo Resolving dependencies like yarn
+
+package.json: 
+	echo Whollalla YARN hasnt run lets fix that
+	rake assets:precompile
+	echo This should fix it hopefully 
+
 up:
 	cd k8s && make up
 run: # test
@@ -18,8 +27,8 @@ run: # test
 routes:
 	rails routes
 
-docker-build: test
-	echo Entering Docker Build DEBUG for cloud build...
+docker-build: test deps
+	@echo [make docker-build] Entering Docker Build DEBUG for cloud build... | lolcat
 	docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile 
 
 #############################################################################################
@@ -73,6 +82,7 @@ test: check-conflicts
 # https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch
 #it works! echo alphabeto | { grep alphabet && exit 42 ||  :; }
 check-conflicts:
+	@echo [make check-conflicts] BEGIN | lolcat
 	find app/assets/ | sort -f | uniq -di | lolcat
 	@echo If you see some output then youre screwed. do NOT commit my friend. This check should exit with value 41 anyway. Make sure you push with make git-push to preserve yourself from this behaviour.
 	find app/assets/ | sort -f | uniq -di | { grep alphabet && exit 41 ||  :; }

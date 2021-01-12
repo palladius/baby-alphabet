@@ -20,6 +20,10 @@ Some examples:
 	
 Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
 
+## Add your own pictures
+
+Glad you've asked. Today, you need to navigate through: `app/assets/images/alphabet/`, remove my pics and add yours.I'm working on a new version where you can just create a new folder (eg `jeremy/`) and select it programmatically by changing the ENV var in `.env` and bingo, you're ready! This will come in `v1.42` or something.
+
 ## Dockerization
 
 Code is perfectly dockerized so you can build and run locally (if you have no Ruby env on your Mac for instance):
@@ -39,3 +43,4 @@ which pushes docker to GCR and then trhough `make up` pushes the GKE cluster to 
 ## Thanks 
 
 * to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
+* Yulia for teaching me how to dockerize a rails app (why the hell doesnt rails come with preconfigured Dockerfile?!?): https://medium.com/@yuliaoletskaya/how-to-start-your-rails-app-in-a-docker-container-9f9ce29ff6d6
