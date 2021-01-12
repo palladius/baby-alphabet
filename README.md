@@ -7,12 +7,11 @@ And available on http://aj-alphabet.palladi.us/ (see Dockerfile for dockerizing 
 To use the app, you just need to edit the .env file (TODO: move to .env.dist) and customize a bit the k8s/ file.
 I'm still learning how to kustomize a YAML without recurring to helm which is a bit too overkill IMHO.
 
-<img src="https://github.com/palladius/baby-alphabet/blob/main/doc/screenshot.jpg" width="300" alt="Screenshot for AJ Alphabet" align='right' />
-
-
 ## Code filosofy
 
 This is a completely STATELESS program, it runs with no DB. The only DB is held by the images themselves so I build a lot of complicated logic in the file naming :P
+
+<img src="https://github.com/palladius/baby-alphabet/blob/main/doc/screenshot.jpg" width="60%" alt="Screenshot for AJ Alphabet" align='right' />
 
 Some examples:
 
