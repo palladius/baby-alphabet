@@ -5,6 +5,9 @@ ruby '2.7.2'
 
 #RICCARDO
 gem 'fastimage'
+gem 'lolcat'     # life without crazy colors makes no sense :P
+#[DEPRECATION] The trollop gem has been renamed to optimist and will no longer be supported. Please switch to optimist as soon as possible.
+#gem 'yarn'       # doesnt work! -> moved to Dockerfile
 #/RICCARDO
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

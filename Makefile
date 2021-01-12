@@ -1,11 +1,12 @@
 
 APPNAME = $(shell basename `pwd`)
 VERSION = $(shell cat VERSION)
+PWD = $(shell pwd)
 #SHELL := /bin/bash
 
 up:
 	cd k8s && make up
-run: test
+run: # test
 	bundle install
 	rails server -b 0.0.0.0 -p 8080
 
@@ -20,10 +21,25 @@ routes:
 docker-build: test
 	echo Entering Docker Build DEBUG for cloud build...
 	docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile 
+
+#############################################################################################
+# run a static version of the container: efficient, self contained but you cant develop on it
 docker-run: docker-build
 	docker run -p 8080:8080 -it $(APPNAME):v$(VERSION) make run
 docker-run-bash: docker-build
 	docker run -p 8080:8080 -it $(APPNAME):v$(VERSION) bash
+#############################################################################################
+
+#############################################################################################
+# run a mounted volume version of the container: more error prone as you have the static
+# stuff with mounted upon it the dynamic stuff, but HEY! If you chaneg the code, it runs on dev
+#Amazing stuff...
+#docker-runvol: docker-build
+#	docker run -p 8080:8080 -it $(APPNAME):v$(VERSION) make run
+docker-runvol-bash: docker-build
+	docker run -p 8080:8080 -v $(PWD):/myapp -it $(APPNAME):v$(VERSION) bash
+#############################################################################################
+
 
 docker-push-to-gcp: docker-build
 	./tag-and-push.sh $(APPNAME) $(VERSION)
@@ -32,7 +48,7 @@ docker-push-to-gcp: docker-build
 
 docker-trigger-pull-latest-image:
 	@yellow If you want to force K8S to pull latest image Riccardo it suffices for you to kill the pod and it will recreate it. Let me give you the right command bro:
-	./kubectl get pods | egrep ^ajalp  | colonna 1  | prepend ./kubectl delete pod/ | lolcat 
+	./kubectl get pods | egrep ^ajalp  | colonna 1  | prepend ./kubectl delete pod/  | lolcat 
 
 cloud-build-locally:
 	echo 1. Lets first try with dryrun to check syntatic errors| lolcat
@@ -58,6 +74,6 @@ test: check-conflicts
 #it works! echo alphabeto | { grep alphabet && exit 42 ||  :; }
 check-conflicts:
 	find app/assets/ | sort -f | uniq -di | lolcat
-	echo If you see some output then youre screwed. do NOT commit my friend. This check should exit with value 41 anyway. Make sure you push with make git-push to preserve yourself from this behaviour.
+	@echo If you see some output then youre screwed. do NOT commit my friend. This check should exit with value 41 anyway. Make sure you push with make git-push to preserve yourself from this behaviour.
 	find app/assets/ | sort -f | uniq -di | { grep alphabet && exit 41 ||  :; }
 	verde Check OK no duplicates in app/assets

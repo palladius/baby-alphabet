@@ -1,8 +1,7 @@
-1.9	2020-01-12	Added link to github. 
-1.8	2020-01-12	Code moved to github, some little effort on README
+1.10	2020-01-12	Adding §vanilla§ dir. adding yearn to Dockerfile since it
+doesnt work on Mac otherwise with awesome new `make docker-runvol`
+1.9 	2020-01-12	Added link to github. 
+1.8 	 2020-01-12	Code moved to github, some little effort on README
 
-
-
-
-1.0 2020-01-10  Fully functional, crappy code, dockerized is online.
+1.0  2020-01-10  Fully functional, crappy code, dockerized is online.
 
