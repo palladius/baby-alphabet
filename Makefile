@@ -6,7 +6,7 @@ PWD = $(shell pwd)
 
 
 deps: package.json
-	echo Resolving dependencies like yarn
+	@echo [make::deps] Resolving dependencies like yarn | lolcat
 
 package.json: 
 	echo Whollalla YARN hasnt run lets fix that
@@ -16,7 +16,7 @@ package.json:
 up:
 	cd k8s && make up
 run: # test
-	bundle install
+	@echo I believe you DONT NEED bundle install as docker ran it for you. But if you cghange Gemfile within the matrioska, pls recall it. | lolcat
 	rails server -b 0.0.0.0 -p 8080
 
 .env:

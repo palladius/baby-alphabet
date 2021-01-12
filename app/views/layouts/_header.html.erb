@@ -22,4 +22,9 @@
         <%= link_to(letter,"/alphabet/letter/#{letter}") %>
     <% } %>
     ]
+
+      <%= link_to "vanilla", params.permit(:alphabet, :cells_per_row, :predilige, :image_base).merge({:image_base => "vanilla"}) %>/
+      <%= link_to "AJ", params.permit(:alphabet, :cells_per_row, :predilige, :image_base).merge({:image_base => "ajcarlesso"}) %>/
+
+    
 </div>

@@ -13,7 +13,7 @@
     <h1 class="padded-multiline">
       <span><%=letter%></span>
     </h1>
-    <%= link_to(image_tag("alphabet/#{paz}", :height => size, :alt => "Legend: #{parola}" ), "/alphabet/letter/#{letter.downcase}") %>
+    <%= link_to(alphabet_image_tag(paz, :height => size, :alt => "Legend: #{parola}" ), "/alphabet/letter/#{letter.downcase}") %>
 </div>
 <% if visualize_figata %>
   <!-- esperimento 1 -->

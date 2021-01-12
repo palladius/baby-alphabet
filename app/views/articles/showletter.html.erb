@@ -6,8 +6,26 @@
 %>
 <h2>List of stuff</h2>
 
-  <p>List of <b><%= alphabet_photo_paths_beginning_with_letter.count %></b> people: <%= alphabet_photo_paths_beginning_with_letter.join(", ") %></p>
+  <p>List of <b><%= alphabet_photo_paths_beginning_with_letter.count %></b> people
+  
+  
+<table border="1" >
 
+  <% alphabet_photo_paths_beginning_with_letter.each do |paz| 
+     obj = AlphabetPicture.new(paz)
+  
+  %>
+    <tr>
+      <td> <%= paz %>
+      <td> <%= obj.size %>
+      <td> <%= obj.verticality %>
+      <td> <%= obj.word_in_primary_language %>
+      <td> <%= obj.word_in_secondary_language %>
+      <td> <%#= obj.to_s %>
+      
+
+  <% end %>
+</table>
 
 
 

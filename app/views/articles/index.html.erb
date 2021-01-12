@@ -1,4 +1,3 @@
-<%#= image_tag("alphabet/alessandro-alle-seychelles.png", :height => 180 , :style => "float: right;") %>
 <h1>AJ Alphabet</h1>
 
 <p>Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in
@@ -13,8 +12,7 @@ I said: 'tranquilla, leave it with me' (which is British for <i>hold my beer</i>
 
 <h2>Some pictures..</h2>
 
-<% @alphabet_photo_paths.each do |paz| 
-%>
-    <%= image_tag("alphabet/"+paz, :height => 50 ) %>
+<% @alphabet_photo_paths.each do |paz|  %>
+    <%= alphabet_image_tag(paz, :height => 50 ) %>
 <% end %>
 

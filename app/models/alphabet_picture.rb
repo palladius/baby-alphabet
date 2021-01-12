@@ -1,12 +1,15 @@
 class AlphabetPicture # < ActiveRecord::Base
     #self.abstract_class = true
+   # @@image_base = $image_base 
+    @@image_base = "vanilla" 
 
-    attr_accessor :filename, :size, :nil
+    attr_accessor :filename, :size, :nil #, :image_base
 
     # e.g. filename = "seychelles.jpg"
     def initialize(filename)
-      puts("++++++++ DEB AlphabetPicture.new('#{filename}' [#{filename.class}])")
+      #puts("++++++++ DEB AlphabetPicture.new('#{filename}' [#{filename.class}])")
       self.filename = filename.to_s
+      #self.image_base = image_base
       self.nil=false
       if filename.nil? 
         self.nil = true
@@ -30,7 +33,7 @@ class AlphabetPicture # < ActiveRecord::Base
     end
 
     def image_path
-      "alphabet/#{filename}"
+      "#{@@image_base }/#{filename}"
     end
 
     def width
@@ -52,7 +55,6 @@ class AlphabetPicture # < ActiveRecord::Base
           regex_incasinata = /(.+)\((.+)\)/
         [  
           filename[regex_incasinata, 1] ,
-
           filename[regex_incasinata, 2] ,
         ]
       else
@@ -94,7 +96,7 @@ class AlphabetPicture # < ActiveRecord::Base
 
 
     def full_path
-        "alphabet/#{paz}" # obj.full_path
+        "#{@@image_base}/#{paz}" # obj.full_path
     end
     def basename # or PAROLA
       filename.split(".")[0] # obj.basename
@@ -116,33 +118,28 @@ class AlphabetPicture # < ActiveRecord::Base
 
     # useless to final client, tough logic here
     def self._find_longfiles(initial=nil)
+      puts "[DEBUG] app/assets/images/#{@@image_base}/*"
       if initial.nil?
-        Dir[ Rails.root + "app/assets/images/alphabet/*" ]
+        Dir[ Rails.root + "app/assets/images/#{@@image_base}/*" ]
       else
         lowercase_initial = initial.to_s[0].downcase # :)
         raise "Wrong initial! #{lowercase_initial}" unless lowercase_initial.between?('a', 'z')
-        arr_up = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
-        arr_down = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
-        arr_up + arr_down # = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
+        arr_up = Dir[ Rails.root + "app/assets/images/#{@@image_base}/#{lowercase_initial}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
+        arr_down = Dir[ Rails.root + "app/assets/images/#{@@image_base}/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
+        arr_up + arr_down # = Dir[ Rails.root + "app/assets/images/#{@@image_base}/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
       end
     end
+
     def self.findall_by_initial(initial=nil)
-      # fullpath_images=[]
-      # if initial.nil?
-      #   fullpath_images =  Dir[ Rails.root + "app/assets/images/alphabet/*" ]
-      # else
-      #   lowercase_initial = initial.to_s[0].downcase # :)
-      #   raise "Wrong initial! #{lowercase_initial}" unless lowercase_initial.between?('a', 'z')
-      #   arr_up = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
-      #   arr_down = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
-      #   fullpath_images = arr_up + arr_down # = Dir[ Rails.root + "app/assets/images/alphabet/#{lowercase_initial.upcase}*" ] # nota che dovrei anche prendere quelle MAIUSCOLE :) TODO
-      # end
-      # fullpath_images.map{|paz| paz.slice! "#{Rails.root}/app/assets/images/alphabet/" ; paz  } 
-      _find_longfiles(initial).map{|path| path.slice! "#{Rails.root}/app/assets/images/alphabet/" ; path  } 
+      _find_longfiles(initial).map{|path| path.slice! "#{Rails.root}/app/assets/images/#{@@image_base}/" ; path  } 
     end
 
     def self.findall()
       self.findall_by_initial()
+    end
+
+    def self.class_image_base
+      @@image_base
     end
 
   end

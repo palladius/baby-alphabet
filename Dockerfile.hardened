@@ -1,0 +1,11 @@
+# Niote this might cvhange
+FROM aj-alfabeto:latest
+
+RUN apt-get remove curl build-essential vim less -y
+
+# Also 1GB in /usr/ !!
+# root@242ad8738b78:/usr# du -sh *
+# 54M     bin
+# 503M    lib
+# 298M    local
+# 217M    share
