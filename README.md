@@ -16,7 +16,8 @@ This is a completely STATELESS program, it runs with no DB. The only DB is held 
 
 Some examples:
 
-    "barca (boat).jpg" # The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT.
+* `hotel.jpg`: word is the same in UK/IT so no biggie.
+* `barca (boat).jpg`. The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT. You might argue on what decides what's primary and what's secondary and I might say it's obvisouly alphabetical, but Im getting in muddy waters by stating "developer's natuionality takes precedence".
 	
 Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
 
