@@ -58,6 +58,6 @@ test: check-conflicts
 #it works! echo alphabeto | { grep alphabet && exit 42 ||  :; }
 check-conflicts:
 	find app/assets/ | sort -f | uniq -di | lolcat
-	echo If you see some output then youre screwed. do NOT commit my friend.
+	echo If you see some output then youre screwed. do NOT commit my friend. This check should exit with value 41 anyway. Make sure you push with make git-push to preserve yourself from this behaviour.
 	find app/assets/ | sort -f | uniq -di | { grep alphabet && exit 41 ||  :; }
 	verde Check OK no duplicates in app/assets
