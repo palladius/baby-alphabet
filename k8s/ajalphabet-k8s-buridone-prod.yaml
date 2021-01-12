@@ -2,21 +2,10 @@
 ---
 apiVersion: v1
 data:
-  #COMANDO_DEFAULT: /usr/local/bin/docker-php-entrypoint apache2-foreground
-  # disabled
   #DEBUG: ""
   #DEBUG_ON: ""
   DOCKER_HOST_HOSTNAME: aspirina
-  # # se non funge usiamo FQDN vero :)
   # FQDN: aj-alphabet.palladi.us
-  # MESSAGGIO_OCCASIONALE: |
-  #   Questo e ora prod, praticamente tutto come prod eccetto il DB cosi posso fare prod e porcate senza SPORCATE :P 
-  # RAILS_ENV: prod
-  # SMTP_PASS: yvnsprjuqemmhnxn"
-  # SMTP_USER: goliardia.it.daemon@gmail.com
-  # TZ: '''Europe/Berlin'''
-  # WEBMASTER_EMAIL: goliardia.it.daemon+webmaster@gmail.com
-kind: ConfigMap
 metadata:
   name: ajalphabet-env-bifida-prod
 
@@ -59,16 +48,12 @@ spec:
                     # a manhouse aggiunte a sopra
                   - name: RAILS_ENV
                     value: development
-#                  - name: MATRIOSKA_VER
-#                    value: "2.10 anche se non e DRY magari prova a fare docker inspect stikazzi del spec/container/image"
 #                  - name: MESSAGGIO_OCCASIONALE
 #                    value: vediamo se lo OverWrita si che lo sovrascrive!!! Eheheh
-#                  - name: DEBUG_ON
-#                    value: TRueeeee # deve essere stringa non buleano
-## 1. Create with: gcloud compute addresses create goliardia-www --global
+## 1. Create with: gcloud compute addresses create <IPSTATICNAME> --global
 ## quando fatto, scropti IP con:
 ## 2. gcloud compute addresses list 
-## INfine configura DNS in cui mettere l'IP su ccc-wiki: https://console.cloud.google.com/net-services/dns/zones/palladi-us/details?project=ric-cccwiki
+## INfine configura DNS in cui mettere l'IP su ccc-wiki:
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
