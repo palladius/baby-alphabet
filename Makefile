@@ -5,7 +5,7 @@ VERSION = $(shell cat VERSION)
 
 up:
 	cd k8s && make up
-run:
+run: test
 	bundle install
 	rails server -b 0.0.0.0 -p 8080
 
@@ -17,7 +17,7 @@ run:
 routes:
 	rails routes
 
-docker-build:
+docker-build: test
 	echo Entering Docker Build DEBUG for cloud build...
 	docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile 
 docker-run: docker-build
@@ -40,6 +40,9 @@ cloud-build-locally:
 	echo 2. Lets now do it without dryrun | lolcat
 	cloud-build-local --dryrun=false .
 
+git-push: test
+	git push
+
 run-docker:
 	@echo TODO with pure docker, lets use docker composer now.
 	# See https://github.com/pacuna/rails5-docker-alpine
@@ -48,3 +51,9 @@ run-docker:
 	docker-compose run --rm web bin/rails db:migrate
 	docker-compose up -d
 
+test: check-conflicts
+# fix these: https://stackoverflow.com/questions/41154015/how-to-prevent-git-from-committing-two-files-with-names-differing-only-in-case
+check-conflicts:
+	find app/assets/ | sort -f | uniq -dic | lolcat
+	echo If you see some output then youre screwed. do NOT commit
+	find app/assets/ | sort -f | uniq -dic | grep alphabet && exit 41
