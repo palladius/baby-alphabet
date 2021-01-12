@@ -52,9 +52,6 @@ class AlphabetPicture # < ActiveRecord::Base
     # pizza.jpg -> [ pizza, pizza]
     # "mamma (mum).jpg" -> [mamma, mum]
     def bilingual_words
-      #if filename =~ /_portrait|_landscape/i
-      #  return [ "#{self.initial}??", "O_missing"]
-      #end
       if filename =~ /(.*)\(.*\)/
           regex_incasinata = /(.+)\((.+)\)/
         [  
@@ -76,11 +73,11 @@ class AlphabetPicture # < ActiveRecord::Base
     def verticality
       ar = aspect_ratio  # cachiong
       
-      return :very_wide  if  ar > 1.5
-      return "landscape" if  ar.between?(1.25, 1.4)  # 4/3
+      return :very_wide  if  ar > 1.52
+      return "landscape" if  ar.between?(1.21, 1.51)  # 4/3
       return "square" if  ar.between?(0.9, 1.1)      # 1/1
-      return "portrait" if  ar.between?(0.66, 0.82)  # 3/4
-      return :very_tall  if  ar < 0.65
+      return "portrait" if  ar.between?(0.63, 0.82)  # 3/4
+      return :very_tall  if  ar < 0.62
       return :boh
     end
 
