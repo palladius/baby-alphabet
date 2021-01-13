@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
     # I should put this in ApplicationController I guess..
     $image_base = params[:image_base]
     $image_base = ENV["ALPHABET_DEFAULT_FOLDER"] if $image_base.nil?
-    $image_base = "alphabet" if $image_base.nil?
+    $image_base = "vanilla" if $image_base.nil?
 
 
     $alphabet = ('A'..'Z').to_a

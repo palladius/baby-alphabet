@@ -1,6 +1,6 @@
-<h1>AJ Alphabet</h1>
+<h1>🔤 AJ Alphabet</h1>
 
-<p>Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in
+<p>On Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in
 reading any letter of th alphabet and she uirged e to do something about it.
 I said: 'tranquilla, leave it with me' (which is British for <i>hold my beer</i>). 
 24 hours later this application was built. 
@@ -9,8 +9,17 @@ I said: 'tranquilla, leave it with me' (which is British for <i>hold my beer</i>
 <p>Please see <a href="/alfabeto?predilige=portrait&cells_per_row=6" >my wife's favorite page</a>.
 </p>
 
+<p>Note that if ENV[ALPHABET_DEFAULT_FOLDER] has been set correctly your default directory 
+for this application should be: 
+<span class="alphabet-directory"><b>
+    <%= ENV["ALPHABET_DEFAULT_FOLDER"] %>/
+</b></span>.
+</p>
 
-<h2>Some pictures..</h2>
+<p>And in fact, <tt>AlphabetPicture.image_base</tt> =    <%= AlphabetPicture.image_base %>.</p>
+
+<h2>Pictures</h2>
+<p>Some pictures in '<%= $image_base %>' folder..</p>
 
 <% @alphabet_photo_paths.each do |paz|  %>
     <%= alphabet_image_tag(paz, :height => 50 ) %>

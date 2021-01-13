@@ -1,8 +1,10 @@
 class AlphabetPicture # < ActiveRecord::Base
     #self.abstract_class = true
    # @@image_base = $image_base 
-   @@image_base = "vanilla" # ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla") 
-   #@@image_base = ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla") 
+
+   # Class variable are tricky: https://www.sitepoint.com/class-variables-a-ruby-gotcha/
+   #@@image_base = "vanilla" # ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla-ebv-not-found") 
+   @@image_base = ENV.fetch("ALPHABET_DEFAULT_FOLDER", "vanilla") 
 
     attr_accessor :filename, :size, :nil #, :image_base
 
