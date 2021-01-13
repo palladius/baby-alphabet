@@ -1,6 +1,7 @@
 ### Created on Do 07 Jan 2021 17:22:01 CET by ./kubernettizza-env-files.sh. go to../ and re call it to refresh data. DO NOT EDIT!
 ---
 apiVersion: v1
+kind: ConfigMap
 data:
   #DEBUG: ""
   #DEBUG_ON: ""
