@@ -8,17 +8,7 @@
     buridone_opts = {:predilige => predilige, :letter => letter , :obj => pic }
 
 %>
-<!--
-  <h2><%=photo_path%></h2>
-   
-    Properties: <pre> 
-        ToString:    <%= pic.to_s %>
-    </pre>
-
-<div width="25%" class="per-letter-put-me-aside-chrissake" >
-
--->
 <div style="height:20rem; width:20%; margin-left:4%; margin-right:0%; float:left; background-color: white;">
-  <%#= render partial: "articles/foto_quadretto/fittingsquares", :locals => buridone_opts %>
+  <%#= render partial: "articles/single_square_experiments/fittingsquares", :locals => buridone_opts %>
    <%= alphabet_image_tag(photo_path, :height => 300 ) %>
 </div>

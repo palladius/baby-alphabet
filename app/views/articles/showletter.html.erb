@@ -1,13 +1,12 @@
-<h1>🔤 <%=@letter.capitalize%></h1>
+<h1>🔤 Letter "<%=@letter.capitalize%>"</h1>
 <%
-  #alphabet_photo_paths_beginning_with_letter = @alphabet_photo_paths.select{|paz| paz.starts_with?(@letter.downcase) }
   alphabet_photo_paths_beginning_with_letter = AlphabetPicture.findall_by_initial @letter rescue []
-
 %>
-<h2>List of stuff</h2>
+<h2>List of Pics</h2>
 
-  <p>List of <b><%= alphabet_photo_paths_beginning_with_letter.count %></b> people
-  
+  <p>List of <b><%= alphabet_photo_paths_beginning_with_letter.count %></b> pictures 
+  starting with letter <b><%= @letter %></b> in folder 
+  </p>
   
 <table border="1" >
 
@@ -29,15 +28,13 @@
 </table>
 
 
-
 <h2>Iterating ugly on Modulericc2</h2>
 
-  (tant par fer quelcousa)
 
   <div style="height:60rem; width:100%; margin: auto;">
   <% alphabet_photo_paths_beginning_with_letter.each do |paz| %>
     <div style=" width:33%; height:320px; margin-left:0%; margin-right:0%; float:left; background-color: white;">
-      <%= render partial: "articles/foto_quadretto/modulericc2", :locals => { :obj => AlphabetPicture.new(paz), :letter => @letter }  %>
+      <%= render partial: "articles/single_square_experiments/modulericc2", :locals => { :obj => AlphabetPicture.new(paz), :letter => @letter }  %>
     </div>
   <% end %>
 </div>

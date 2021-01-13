@@ -9,11 +9,9 @@
     <h1>AJ alphabet</h1>
 <% end %>
 
-
 <table border="<%= table_border %>" style="table-layout:fixed;" class="alphabet-table" >
     <% chunked_letters.each_with_index do |letters_row, row| %>
-        <tr>
-            <!--    [row=><%=row%>]  Lettere in questa riga <b><%=letters_row%></b> <br/> -->
+        <tr class="alphabet-row" >
             <% letters_row.each_with_index do |letter, ix| 
                 alphabet_photo_paths_beginning_with_letter = @alphabet_photo_paths.select{|paz| paz.starts_with?(letter.downcase) }
             %>

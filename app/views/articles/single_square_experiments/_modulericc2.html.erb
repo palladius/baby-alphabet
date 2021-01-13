@@ -1,7 +1,4 @@
-<!-- 
-TODO(): modulericc e' cosi' fico che considera questa la piattaforma di sviluppo.
-comincia con accorciare la cosa in basso e a metterci l'intera parola con iniziale grossa.
--->
+<!-- modulericc2 -->
 <%
     pri = obj.word_in_primary_language
     sec = obj.word_in_secondary_language
@@ -17,7 +14,8 @@ comincia con accorciare la cosa in basso e a metterci l'intera parola con inizia
     #puts "[DEBUG] full_paz=#{full_paz} OBJ=#{obj}"
 %>
 <a href="/alphabet/letter/<%=letter %>%">
-<div class="modulericc2" style="background: url('/assets/<%=full_paz%>'); background-size: 340px 340px;" >
+<div class="modulericc2" 
+    style="background: url('/assets/<%=full_paz%>'); background-size: 395px 395px;" >
 <header>
 <% if pri == sec %>
     <h1>🇮🇹 🇬🇧 <%= pri %> 

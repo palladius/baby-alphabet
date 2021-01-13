@@ -1,0 +1,16 @@
+<%
+    images_with_correct_verticality =  AlphabetPicture.findall_by_initial_and_verticality letter, verticality 
+    my_image = images_with_correct_verticality.sample 
+    my_image =  "_#{verticality}.jpg"  if my_image.nil?
+    picture_object = AlphabetPicture.new(my_image) # momento campale! Il mi primo oggetto rails non activerecord!!
+    
+%>
+<div class="verticality-<%=verticality%>" >
+    <% if verticality == "portrait" %>
+        <!-- _portrait_or_landscape: vertical / portrait -->
+        <%= render partial: "articles/single_square_experiments/modulericcvert", :locals => {:full_paz => picture_object.full_path , :size => size, :parola => picture_object.prima_parola, :letter => letter , :obj => picture_object }%>
+    <% else %>
+        <!-- _portrait_or_landscape: horizontal / landscape-->
+        <%= render partial: "articles/single_square_experiments/modulericc2", :locals => {:full_paz => picture_object.full_path , :size => size, :parola => picture_object.prima_parola, :letter => letter, :obj => picture_object }%>
+    <% end %>
+</div>
