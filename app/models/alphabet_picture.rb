@@ -4,7 +4,7 @@ class AlphabetPicture # < ActiveRecord::Base
 
    # Class variable are tricky: https://www.sitepoint.com/class-variables-a-ruby-gotcha/
    #@@image_base = "vanilla" # ENV.fetch(ALPHABET_DEFAULT_FOLDER, "vanilla-ebv-not-found") 
-   @@image_base = ENV.fetch("ALPHABET_DEFAULT_FOLDER", "vanilla") 
+   @@image_base = ENV.fetch("ALPHABET_DEFAULT_FOLDER", ALPHABET_DEFAULT_FOLDER_IN_CASE_NOTHING_IS_FOUND) 
 
     attr_accessor :filename, :size, :nil #, :image_base
 
