@@ -29,8 +29,11 @@ module ArticlesHelper
         ret = "#varz:\n"
         $INTERESTING_ENV_VARS = %w{OCCASIONAL_MESSAGE MESSAGGIO_OCCASIONALE FQDN PROJECT_ID ALPHABET_DEFAULT_FOLDER HOSTNAME }
         $INTERESTING_ENV_VARS.each do |env|
-            ret += "#{ env }:\t#{ ENV.fetch env, :boh }\n"
+            ret += "ENV_#{ env }:\t#{ ENV.fetch env, :boh }\n"
 
+        end
+        DOTENV_SMART_VARS.each do |k, v|
+            ret += "DOTENV_#{ k }:\t#{ v }\n"
         end
 
         return ret
