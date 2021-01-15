@@ -16,25 +16,27 @@
   %>
     <tr>
       <td class="foto-path" > <%= paz %>
-      <td class="foto-size" > <%= obj.size %>
-      <td class="foto-ratio" > <%= 1.0 * obj.size[0] / obj.size[1] %>
+      <td class="foto-size" > <%= obj.size[0] %>x<%= obj.size[1] %>
+      <td class="foto-ratio" > <%= (100.0 * obj.size[0] / obj.size[1]).to_i / 100.0 %>
       <td class="foto-verticality" > <%= obj.verticality %>
       <td class="foto-it" > <%= obj.word_in_primary_language %>
       <td class="foto-uk" > <%= obj.word_in_secondary_language %>
       <td class="foto-string" > <%#= obj.to_s %>
       
-
   <% end %>
 </table>
 
 
 <h2>Iterating ugly on Modulericc2</h2>
 
-
   <div style="height:60rem; width:100%; margin: auto;">
   <% alphabet_photo_paths_beginning_with_letter.each do |paz| %>
     <div style=" width:33%; height:320px; margin-left:0%; margin-right:0%; float:left; background-color: white;">
-      <%= render partial: "articles/single_square_experiments/modulericc2", :locals => { :obj => AlphabetPicture.new(paz), :letter => @letter }  %>
+      <%= render partial: "articles/single_square_experiments/modulericc2", :locals => {
+          :obj => AlphabetPicture.new(paz), 
+          :letter => @letter, 
+          :description => paz,
+          }  %>
     </div>
   <% end %>
 </div>
