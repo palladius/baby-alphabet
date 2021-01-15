@@ -1,4 +1,8 @@
+#!/bin/bash
+#
+source .env
 
+# TODO check that KUBERNETES_COTEXT equals current context or die/refuse to operate
 
 #kubectl create namespace aj-alphabet
 echodo kubectl --namespace "aj-alphabet" "$@"
