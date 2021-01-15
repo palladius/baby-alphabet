@@ -27,8 +27,12 @@
     </h1>
 <% end %>
 </header>
-  <% if defined? description %>
-    <tt class="image-description" ><%=description %></tt>
-  <% end %>
 </div>
+
 </a>
+  <% if defined? description %>
+    <span class"image-description" >
+    File:
+    <a href="/assets/<%=full_paz%>" ><tt class="image-description" ><%=description %></tt></a>
+    </span>
+  <% end %>
