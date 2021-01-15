@@ -60,6 +60,7 @@ k8s-drain: docker-trigger-pull-latest-image
 
 docker-trigger-pull-latest-image:
 	@yellow If you want to force K8S to pull latest image Riccardo it suffices for you to kill the pod and it will recreate it. Let me give you the right command bro:
+	./check-versions.sh | lolcat
 	./kubectl get pods | egrep ^ajalp  | colonna 1  | prepend ./kubectl delete pod/  | lolcat 
 
 cloud-build-locally:
