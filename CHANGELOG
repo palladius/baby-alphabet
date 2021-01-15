@@ -1,3 +1,6 @@
+1.19  2020-01-15 minor fix footer
+1.18  2020-01-15 Added comments in letter page. shitload of changes in AJ folder. Note to self: I should be removing those
+                 from github and manage separately, like on GDrive.
 1.16  2020-01-13 github link, random pic now. Better <!-- comments -->
 1.15b 2020-01-13 Aborted Refactoring code to pass OBJECTS to partial instead of stupid strings :)
 1.15  2020-01-12 Now1.15  2020-01-12 github link, random pic now. Refactoring code to pass OBJECTS to partial instead of stupid strings :)
