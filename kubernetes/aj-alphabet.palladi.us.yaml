@@ -80,6 +80,7 @@ kind: Service
 metadata:
   name: ajalphabet-prod-service
 spec:
+  # Soccmel non ci credo che funziona!! Wow! Credo sia l'unico mio nodeport che funge! :)
   type: NodePort
   selector:
     app: ajalphabet-prod
