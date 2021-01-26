@@ -8,10 +8,12 @@ status:
 	# Questo funge solo per me - ma lo OSSero' presto e metto in un medium article.
 	ks up -k .
 
-up:
+.init:
+	ks  -k . init
+
+up: .init
 #	../kubectl apply -f .
-	ks up -k .
-	
+	ks -k . up
 
 
 # nota che prod va a modo suo con NodePort e con la brittleconfig
