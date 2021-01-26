@@ -6,7 +6,7 @@ data:
   #DEBUG: ""
   #DEBUG_ON: ""
   DOCKER_HOST_HOSTNAME: aspirina
-  # FQDN: aj-alphabet.palladi.us
+  # FQDN: ajalphabet-dev.palladi.us.us
 metadata:
   name: ajalphabet-dev-config
 
@@ -18,7 +18,7 @@ metadata:
   name: ajalphabet-dev-certificate
 spec:
   domains:
-    - aj-alphabet.palladi.us
+    - aj-alphabet-dev.palladi.us.us
 # non va (credo) perche punta a un'immagine che non e'pubblica su palladius..
 ---
 
@@ -55,25 +55,22 @@ spec:
 ## quando fatto, scropti IP con:
 ## 2. gcloud compute addresses list 
 ## INfine configura DNS in cui mettere l'IP su ccc-wiki:
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: ajalphabet-dev-ingress
-  annotations:
-    kubernetes.io/ingress.global-static-ip-name: ajalphabet-global-prod
-    ### "https://console.cloud.google.com/networking/addresses/list?hl=it&organizationId=615578690183&project=goliardia-prod"
-    ### ajalphabet-global-prod	34.120.195.77
-    # $ dns-setup-palladius.sh aj-alphabet.palladi.us 34.120.195.77
-    networking.gke.io/managed-certificates: ajalphabet-dev-certificate
-spec:
-  rules:
-  - host: aj-alphabet.palladi.us
-    http:
-      paths:
-      - backend:
-          serviceName: ajalphabet-dev-service
-          servicePort: http
+# ---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: ajalphabet-dev-ingress
+#   annotations:
+#     kubernetes.io/ingress.global-static-ip-name: ajalphabet-global-dev
+#     networking.gke.io/managed-certificates: ajalphabet-dev-certificate
+# spec:
+#   rules:
+#   - host: aj-alphabet-dev.palladi.us.us
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: ajalphabet-dev-service
+#           servicePort: http
 ---
 apiVersion: v1
 kind: Service
