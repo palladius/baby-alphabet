@@ -37,11 +37,10 @@ spec:
         spec: 
             containers:
                 - name: ajalphabet-dev
-                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
-#                  image: gcr.io/goliardia-prod/aj-alfabeto:v1.3
+#                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
+                  image: gcr.io/goliardia-prod/aj-alfabeto:v2.00
                   imagePullPolicy: Always
-                  #command: [ "rails", "server", "-b", "0.0.0.0", "-p", "8080"]
-                  command: [ "make", "run"]
+#                  command: [ "make", "run"]
                   command: [ "./entrypoint-8080.sh"]                  
                   envFrom:
                     - configMapRef:

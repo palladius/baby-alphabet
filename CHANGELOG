@@ -1,3 +1,5 @@
+2.00. 2020-01-27 Just backed up all pictures in another folder and select a SINGLE pic for horizontal and vertical. Took me    
+                 40minutes as many werent compliant.
 1.20. 2020-01-26  LANGUAGE_FLAG_SECONDARY fixed in ./env so should surface in /varz. Also trying to fix varz/ for monitoring 
 1.19  2020-01-15 minor fix footer
 1.18  2020-01-15 Added comments in letter page. shitload of changes in AJ folder. Note to self: I should be removing those
