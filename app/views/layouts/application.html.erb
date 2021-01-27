@@ -10,16 +10,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body><div class="buridone" >
+
     <% render_unless_print_friendly? do %>
       <%= render "layouts/header" %>
-  <% end %>
+    <% end %>
 
   <div class="container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <%= yield %>
+    <div class="centrato" >
+      <%= yield %>
+    </div>
   </div>
 
   <% render_unless_print_friendly? do %>
@@ -30,5 +33,6 @@
         PROD: <a href="http://aj-alphabet.palladi.us/" >aj-alphabet.palladi.us</a>
     </div>
   <% end %>
+  </div>
   </body>
 </html>
