@@ -24,7 +24,10 @@ class ArticlesController < ApplicationController
   end
 
   def varz
+    #content_type = "text/plain"
+    #render plain: 
     _common_variables
+    #return body: _common_variables,  content_type: "text/text"
   end
   
 #  private:

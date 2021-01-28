@@ -1,19 +1,21 @@
-2.00. 2020-01-27 Just backed up all pictures in another folder and select a SINGLE pic for horizontal and vertical. Took me    
+2.02  2021-01-28 /varz dovrebbe fare advertising delle metriche per prometheus..
+2.01. 2021-01-27 sobenme. Ma qui ho fixato dev!
+2.00. 2021-01-27 Just backed up all pictures in another folder and select a SINGLE pic for horizontal and vertical. Took me    
                  40minutes as many werent compliant.
-1.20. 2020-01-26  LANGUAGE_FLAG_SECONDARY fixed in ./env so should surface in /varz. Also trying to fix varz/ for monitoring 
-1.19  2020-01-15 minor fix footer
-1.18  2020-01-15 Added comments in letter page. shitload of changes in AJ folder. Note to self: I should be removing those
+1.20. 2021-01-26  LANGUAGE_FLAG_SECONDARY fixed in ./env so should surface in /varz. Also trying to fix varz/ for monitoring 
+1.19  2021-01-15 minor fix footer
+1.18  2021-01-15 Added comments in letter page. shitload of changes in AJ folder. Note to self: I should be removing those
                  from github and manage separately, like on GDrive.
-1.16  2020-01-13 github link, random pic now. Better <!-- comments -->
-1.15b 2020-01-13 Aborted Refactoring code to pass OBJECTS to partial instead of stupid strings :)
-1.15  2020-01-12 Now1.15  2020-01-12 github link, random pic now. Refactoring code to pass OBJECTS to partial instead of stupid strings :)
-1.14  2020-01-12 Now vanilla vs ajcarlesso is togglable!! Added varz. And MESSAGGIO_OCCASIONALE. And passing env to docker of coruse..
-1.12  2020-01-12 Big change: now two directories aere reality
+1.16  2021-01-13 github link, random pic now. Better <!-- comments -->
+1.15b 2021-01-13 Aborted Refactoring code to pass OBJECTS to partial instead of stupid strings :)
+1.15  2021-01-12 Now1.15  2021-01-12 github link, random pic now. Refactoring code to pass OBJECTS to partial instead of stupid strings :)
+1.14  2021-01-12 Now vanilla vs ajcarlesso is togglable!! Added varz. And MESSAGGIO_OCCASIONALE. And passing env to docker of coruse..
+1.12  2021-01-12 Big change: now two directories aere reality
 1.11             Dockerfile now supports YARN and Node.
-1.10  2020-01-12 Adding §vanilla§ dir. adding yearn to Dockerfile since it
+1.10  2021-01-12 Adding §vanilla§ dir. adding yearn to Dockerfile since it
                  doesnt work on Mac otherwise with awesome new `make docker-runvol`
-1.9   2020-01-12 Added link to github. 
-1.8   2020-01-12 Code moved to github, some little effort on README
+1.9   2021-01-12 Added link to github. 
+1.8   2021-01-12 Code moved to github, some little effort on README
 ...
-1.0  2020-01-10  Fully functional, crappy code, dockerized is online.
+1.0  2021-01-10  Fully functional, crappy code, dockerized is online.
 

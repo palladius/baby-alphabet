@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/alfabeto", to: "articles#alphabet"
 
 
-  get "/varz",  to: "articles#varz"
+  get "/varz",  to: "articles#varz.text" #, format: :text}
 #  get "/vertical",   to: "articles#alphabet"
 #  get "/horizontal", to: "articles#alphabet"
 
