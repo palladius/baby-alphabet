@@ -43,7 +43,7 @@ module ArticlesHelper
     def render_varz_in_text_form()
         # popolo le variabili
         vars_to_render = {
-            "# This is a comment" => nil,
+            "# Riccardo queste variabili sono ciofeche guarda all endpoint /metrics che figata c e la cosa apposta per prometheus!" => nil,
             #:foo => 'bar',
             #:Risposta_MAIUSCOLA => 42.0,
             'VERSION' =>  $VERSION ,

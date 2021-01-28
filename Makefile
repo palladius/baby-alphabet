@@ -8,7 +8,7 @@ PWD = $(shell pwd)
 help:
 	@echo Ricc e molto semplice:
 	@echo make docker-run:     per fare docker statico. Funge ma non lo cambi
-	@echo make docker-rundev: questo cipolli il codice mentre esegui, fighissimo. | lolcat
+	@echo make docker-runvol: questo cipolli il codice mentre esegui, fighissimo. | lolcat
 
 deps: package.json
 	@echo [make::deps] Resolving dependencies like yarn | lolcat

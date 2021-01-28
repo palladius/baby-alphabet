@@ -7,6 +7,7 @@ ruby '2.7.2'
 gem 'fastimage'
 gem 'lolcat'     # life without crazy colors makes no sense :P
 gem 'dotenv'   # to load .env
+gem 'prometheus-client' # https://www.robustperception.io/instrumenting-a-ruby-on-rails-application-with-prometheus
 #[DEPRECATION] The trollop gem has been renamed to optimist and will no longer be supported. Please switch to optimist as soon as possible.
 #gem 'yarn'       # doesnt work! -> moved to Dockerfile
 #/RICCARDO

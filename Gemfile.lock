@@ -115,6 +115,7 @@ GEM
       racc (~> 1.4)
     optimist (3.0.1)
     paint (2.2.1)
+    prometheus-client (2.1.0)
     public_suffix (4.0.6)
     puma (5.1.1)
       nio4r (~> 2.0)
@@ -221,6 +222,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   lolcat
+  prometheus-client
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)

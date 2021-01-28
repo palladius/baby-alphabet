@@ -1,3 +1,5 @@
+2.03  2021-01-28 Ora che varz va a balus usiamo le /metrics di prometheus seguendo questo splendido documento 
+                 https://www.robustperception.io/instrumenting-a-ruby-on-rails-application-with-prometheus 
 2.02  2021-01-28 /varz dovrebbe fare advertising delle metriche per prometheus..
 2.01. 2021-01-27 sobenme. Ma qui ho fixato dev!
 2.00. 2021-01-27 Just backed up all pictures in another folder and select a SINGLE pic for horizontal and vertical. Took me    
