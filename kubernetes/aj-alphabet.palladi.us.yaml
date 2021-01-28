@@ -37,7 +37,7 @@ spec:
         spec: 
             containers:
                 - name: ajalphabet-prod
-                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
+                  image: gcr.io/goliardia-prod/aj-alfabeto:v2.03
 #                  image: gcr.io/goliardia-prod/aj-alfabeto:v1.3
                   imagePullPolicy: Always
                   #command: [ "rails", "server", "-b", "0.0.0.0", "-p", "8080"]
