@@ -19,7 +19,7 @@ package.json:
 	echo This should fix it hopefully 
 
 up:
-	cd k8s && make up
+	make up -C kubernetes/
 run: # test
 	@echo I believe you DONT NEED bundle install as docker ran it for you. But if you cghange Gemfile within the matrioska, pls recall it. | lolcat
 	rails server -b 0.0.0.0 -p 8080

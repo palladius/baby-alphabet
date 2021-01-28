@@ -37,8 +37,8 @@ spec:
         spec: 
             containers:
                 - name: ajalphabet-dev
-                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
-#                  image: gcr.io/goliardia-prod/aj-alfabeto:v2.00
+#                  image: gcr.io/goliardia-prod/aj-alfabeto:latest
+                  image: gcr.io/goliardia-prod/aj-alfabeto:v2.03
                   imagePullPolicy: Always
                   command: [ "make", "run"]
 #                  command: [ "./entrypoint-8080.sh"]       # questo non va            

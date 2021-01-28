@@ -16,7 +16,8 @@ function _docker() {
 echo "1. Taking for granted local tag exists: $APPVER"
 _docker tag "${APPVER}" "gcr.io/$PROJECT_ID/${APPVER}" &&
            _docker push "gcr.io/$PROJECT_ID/${APPVER}"
-echo "2. Building also LATEST version"
+
+echo "2. Building also LATEST version (auto TAG LATEST!!)" | lolcat 
 
 _docker tag "${APPVER}" "${APP}" &&
 _docker tag "${APP}" "gcr.io/$PROJECT_ID/${APP}" &&
