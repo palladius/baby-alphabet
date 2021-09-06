@@ -1,6 +1,7 @@
 # README
 
-On Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in reading any letter of th alphabet and she uirged e to do something about it. I said: 'tranquilla, leave it with me' (which is British for hold my beer). 24 hours later this application was built.
+On Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in reading any letter of th alphabet and she uirged e to do something about it. I said: 'tranquilla, leave it with me' (which is British for 'hold my beer.).
+24 hours later this application was built.
 
 And available on http://aj-alphabet.palladi.us/ (see Dockerfile for dockerizing it and `k8s` for the kubernitization).
 
@@ -16,8 +17,8 @@ This is a completely STATELESS program, it runs with no DB. The only DB is held 
 Some examples:
 
 * `hotel.jpg`: word is the same in UK/IT so no biggie.
-* `barca (boat).jpg`. The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT. You might argue on what decides what's primary and what's secondary and I might say it's obvisouly alphabetical, but Im getting in muddy waters by stating "developer's natuionality takes precedence".
-	
+* `barca (boat).jpg`. The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT. You might argue on what decides what's primary and what's secondary and I might say it's obvisouly alphabetical, but Im getting in muddy waters by stating "developer's nationality takes precedence".
+
 Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
 
 ## Add your own pictures
