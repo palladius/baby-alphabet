@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+metadata:
+  name: baby-alphabet
+build:
+  artifacts:
+  # PROD - aspettiamo
+  #- image: gcr.io/goliardia-prod/aj-alfabeto
+  - image: gcr.io/goliardia-prod/aj-alfabeto-skaff
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/aj-alphabet-skaff.palladi.us.yaml
+    #- kubernetes/aj-alphabet-dev.palladi.us.yaml
+    #- kubernetes/aj-alphabet.palladi.us.yaml

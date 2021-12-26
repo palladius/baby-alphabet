@@ -10,7 +10,16 @@ gem 'dotenv'   # to load .env
 gem 'prometheus-client' # https://www.robustperception.io/instrumenting-a-ruby-on-rails-application-with-prometheus
 #[DEPRECATION] The trollop gem has been renamed to optimist and will no longer be supported. Please switch to optimist as soon as possible.
 #gem 'yarn'       # doesnt work! -> moved to Dockerfile
+
+#BUGS
+# 2021-12-26 both ruby 2.7.2 and 2.7.5 fail with this message:
+# #12 7.718 Your bundle is locked to mimemagic (0.3.5), but that version could not be found
+# solution https://stackoverflow.com/questions/66919504/your-bundle-is-locked-to-mimemagic-0-3-5-but-that-version-could-not-be-found
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
 #/RICCARDO
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'

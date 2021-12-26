@@ -1,0 +1,85 @@
+### Created on Do 07 Jan 2021 17:22:01 CET by ./kubernettizza-env-files.sh. go to../ and re call it to refresh data. DO NOT EDIT!
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  #DEBUG: ""
+  #DEBUG_ON: ""
+  DOCKER_HOST_HOSTNAME: aspirina
+  # FQDN: ajalphabet-dev.palladi.us.us
+metadata:
+  name: ajalphabet-skaff-config
+
+---
+
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: ajalphabet-skaff-certificate
+spec:
+  domains:
+    - aj-alphabet-skaff.palladi.us.us
+# non va (credo) perche punta a un'immagine che non e'pubblica su palladius..
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ajalphabet-skaff-deployment
+spec:
+    selector:
+        matchLabels:
+            app: ajalphabet-skaff
+    template:
+        metadata:
+            labels:
+                app: ajalphabet-skaff
+        spec: 
+            containers:
+                - name: ajalphabet-skaff
+                  image: gcr.io/goliardia-prod/aj-alfabeto-skaff
+                  imagePullPolicy: Always
+                  command: [ "make", "run"]
+#                  command: [ "./entrypoint-8080.sh"]       # questo non va            
+                  envFrom:
+                    - configMapRef:
+                        name: ajalphabet-skaff-config
+                  env:
+                    # a manhouse aggiunte a sopra
+                  - name: RAILS_ENV
+                    value: development
+#                  - name: MESSAGGIO_OCCASIONALE
+#                    value: vediamo se lo OverWrita si che lo sovrascrive!!! Eheheh
+## 1. Create with: gcloud compute addresses create <IPSTATICNAME> --global
+## quando fatto, scropti IP con:
+## 2. gcloud compute addresses list 
+## INfine configura DNS in cui mettere l'IP su ccc-wiki:
+# ---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: ajalphabet-skaff-ingress
+#   annotations:
+#     kubernetes.io/ingress.global-static-ip-name: ajalphabet-global-skaff
+#     networking.gke.io/managed-certificates: ajalphabet-skaff-certificate
+# spec:
+#   rules:
+#   - host: aj-alphabet-skaff.palladi.us.us
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: ajalphabet-skaff-service
+#           servicePort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ajalphabet-skaff-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ajalphabet-skaff
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080

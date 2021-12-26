@@ -4,7 +4,12 @@
 # TODO ricc ocnisder slimming it down as Julias says: https://medium.com/@yuliaoletskaya/how-to-start-your-rails-app-in-a-docker-container-9f9ce29ff6d6
 #FROM ruby:2.6.5-slim-stretch     # Original Julia
 #FROM ruby:2.7                    # Original Riccardo 
-FROM ruby:2.7-slim     
+
+# 2021-12-26:
+#FROM ruby:2.7.5-slim     
+FROM ruby:2.7.2
+# 2021-12-26 TODO(ricc): Se questo va Ric ristabilisci la versione SLIM
+#FROM ruby:2.7.2
 
 
 
@@ -26,7 +31,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 #sqlite bug 
 # E brava Julia!
-RUN bundle install --jobs 5
+RUN bundle install --jobs 20 --retry 3
 # apt-get install sqlite3 libsqlite3-dev
 COPY . /myapp
 
