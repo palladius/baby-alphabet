@@ -2,6 +2,7 @@ apiVersion: skaffold/v2beta25
 kind: Config
 metadata:
   name: baby-alphabet
+  # ALPHABET_DEFAULT_FOLDER=vanilla
 build:
   artifacts:
   # PROD - aspettiamo
@@ -9,6 +10,7 @@ build:
   - image: gcr.io/goliardia-prod/aj-alfabeto-skaff
     docker:
       dockerfile: Dockerfile
+      target: development
 deploy:
   kubectl:
     manifests:

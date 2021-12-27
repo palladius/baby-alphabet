@@ -7,7 +7,7 @@
 
 # 2021-12-26:
 #FROM ruby:2.7.5-slim     
-FROM ruby:2.7.2
+FROM ruby:2.7.2 as development
 # 2021-12-26 TODO(ricc): Se questo va Ric ristabilisci la versione SLIM
 #FROM ruby:2.7.2
 

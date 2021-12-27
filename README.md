@@ -41,6 +41,14 @@ Also try:
 
 which pushes docker to GCR and then trhough `make up` pushes the GKE cluster to GCP. Since it's always pulling LATEST tag, if you want to refresh it it also gives you a commodity refresh command (basically kill current deployment , in GoT style).
 
+### Skaffoldization
+
+On xmas 2021, I've tried to add this to Skaffold.
+
+    gcloud auth configure-docker
+    gcloud config set core/project goliardia-prod
+    skaffold dev
+
 ## Thanks 
 
 * to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
