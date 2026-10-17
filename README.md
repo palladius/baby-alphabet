@@ -1,55 +1,75 @@
-# README
+# 🔤 Baby Alphabet (AJ Alphabet)
 
-On Saturday 9 January 2021, my wife told me my son Alessandro is a bit late in reading any letter of th alphabet and she uirged e to do something about it. I said: 'tranquilla, leave it with me' (which is British for 'hold my beer.).
-24 hours later this application was built.
+On Saturday 9 January 2021, my wife told me my son Alessandro was a bit late in reading any letter of the alphabet and she urged me to do something about it. I said: *"tranquilla, leave it with me"* (which is British for *"hold my beer"*).
+24 hours later, this application was built.
 
-And available on http://aj-alphabet.palladi.us/ (see Dockerfile for dockerizing it and `k8s` for the kubernitization).
+🌐 **Live Demo on GitHub Pages**: **[https://palladius.github.io/baby-alphabet/](https://palladius.github.io/baby-alphabet/)**
 
-To use the app, you just need to edit the .env file (TODO: move to .env.dist) and customize a bit the k8s/ file.
-I'm still learning how to kustomize a YAML without recurring to helm which is a bit too overkill IMHO.
+*(Also runnable as a classic Ruby on Rails / Docker / Kubernetes app — see `Dockerfile` for containerization and `kubernetes/` for Kubernetes manifests).*
 
-## Code filosofy
+To customize the Rails app, copy `.env.dist` to `.env` and tweak your settings or `kubernetes/` manifests.
 
-This is a completely STATELESS program, it runs with no DB. The only DB is held by the images themselves so I build a lot of complicated logic in the file naming :P
+## 🧠 Code Philosophy
 
-<img src="https://github.com/palladius/baby-alphabet/blob/main/doc/screenshot.jpg" width="60%" alt="Screenshot for AJ Alphabet" align='right' />
+This is a completely **stateless** program — it runs with **no database**! The entire "database" is held by the image filenames themselves, using a naming convention parsed at runtime:
+
+<img src="https://github.com/palladius/baby-alphabet/blob/main/doc/screenshot.jpg?raw=true" width="60%" alt="Screenshot for AJ Alphabet" align="right" />
 
 Some examples:
 
-* `hotel.jpg`: word is the same in UK/IT so no biggie.
-* `barca (boat).jpg`. The system will understand its primary name (Italian) is BARCA and its secondary name (UK) is BOAT. You might argue on what decides what's primary and what's secondary and I might say it's obvisouly alphabetical, but Im getting in muddy waters by stating "developer's nationality takes precedence".
+* `hotel.jpg`: the word is the same in UK and IT, so no biggie (`🇮🇹 🇬🇧 Hotel`).
+* `barca (boat).jpg`: the system understands its primary name (Italian) is **BARCA** and its secondary name (English) is **BOAT**. You might argue about what decides what's primary and what's secondary, and I might say it's obviously alphabetical — though I'm getting into muddy waters by stating *"the developer's nationality takes precedence"*. 😉
 
-Some day I might just create a dB as parsing files and their WxH is slow and stupid. But for 26 images its still doable :)
+Someday I might create a DB, as parsing files and their `WxH` dimensions on the fly was originally slow. For a few dozen images, however, it's fast, stateless, and now also pre-compiled into a zero-backend static Web App for **GitHub Pages**!
 
-## Add your own pictures
+## ✨ Features (v2.10+)
 
-Glad you've asked. Today, you need to navigate through: `app/assets/images/alphabet/`, remove my pics and add yours.I'm working on a new version where you can just create a new folder (eg `jeremy/`) and select it programmatically by changing the ENV var in `.env` and bingo, you're ready! This will come in `v1.42` or something.
+* **Semi-transparent Letter Watermark (`A a` / `B b` / `C c`)**: Each card displays a crisp, semi-transparent glassmorphic badge in the top-right corner with both uppercase and lowercase letters so kids immediately associate the letter shape with the picture and word.
+* **Bilingual Captions (`🇮🇹` / `🇬🇧`)**: Highlights the initial letter and shows both Italian and English words when they differ.
+* **Web Speech API Pronunciation (`🔊`)**: Click the speaker icon on any card to hear the word pronounced in Italian and English.
+* **Dataset Switcher**: Switch on the fly between `🍝 Vanilla (Pasta)`, `👨‍👩‍👦‍👦 AJ Family`, and `🌍 All Pics`.
+* **Orientation & Alphabet Modes**: Toggle between Landscape (4 columns), Portrait ("Kate's favorite" 6 columns), Square (5 columns), and switch between the 26-letter English (`A–Z`) and 21-letter Italian (`A–Z` without `J, K, W, X, Y`) alphabets.
 
-## Dockerization
+## 🖼️ Add Your Own Pictures
 
-Code is perfectly dockerized so you can build and run locally (if you have no Ruby env on your Mac for instance):
+Navigate to `app/assets/images/`, where picture collections live (`vanilla/`, `ajcarlesso/`, `ajcarlesso-loads/`).
+You can add your own images using the `italian_word (english_word).jpg` naming convention, or select your preferred default folder via `ALPHABET_DEFAULT_FOLDER` in `.env`.
 
-    make docker-run
-	
-You can also push as k8s deployment if you have Google credentials (sorry about that - but send me a PR for AWS/Azure deployment, no big deal!)
-You just need to change the project id in `.env`. I also like to use a `kubectl` wrapper around kubectl to make sure i use the right namespace and possibly
-the right cluster! :) Funny enough, due to its homonimity, `./kubectl` inherits autocompletion so you can easily TAB hour way through ./kubectl get pods and so on..
+To rebuild the static GitHub Pages site locally:
 
-Also try:
+```bash
+just build-static
+# or directly:
+ruby bin/generate_static_site.rb _site
+```
 
-    make docker-push-to-gcp 
+## 🐳 Dockerization & Kubernetes
 
-which pushes docker to GCR and then trhough `make up` pushes the GKE cluster to GCP. Since it's always pulling LATEST tag, if you want to refresh it it also gives you a commodity refresh command (basically kill current deployment , in GoT style).
+The Ruby on Rails application is containerized so you can build and run it locally even without a local Ruby 2.7 environment:
 
-### Skaffoldization
+```bash
+make docker-run
+```
 
-On xmas 2021, I've tried to add this to Skaffold.
+You can also deploy to a Kubernetes cluster (GKE) if you have Google Cloud credentials configured. Update `PROJECT_ID` in `.env` and use the included `./kubectl` wrapper (which ensures the right namespace and cluster context while preserving bash/zsh autocompletion):
 
-    gcloud auth configure-docker
-    gcloud config set core/project goliardia-prod
-    skaffold dev
+```bash
+make docker-push-to-gcp
+```
 
-## Thanks 
+This builds and pushes the image to Google Container Registry / Artifact Registry and refreshes the GKE deployment.
 
-* to my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for doing a real jackpot by marrying me.
-* Yulia for teaching me how to dockerize a rails app (why the hell doesnt rails come with preconfigured Dockerfile?!?): https://medium.com/@yuliaoletskaya/how-to-start-your-rails-app-in-a-docker-container-9f9ce29ff6d6
+### Skaffold
+
+To run in continuous development mode with Skaffold:
+
+```bash
+gcloud auth configure-docker
+gcloud config set core/project goliardia-prod
+skaffold dev
+```
+
+## 🙏 Thanks
+
+* To my wife for creating such amazing and inspiring children (Alessandro and Sebastian), and for hitting a real jackpot by marrying me. 😉
+* To Yulia for her guide on dockerizing a Rails app: [How to start your Rails app in a Docker container](https://medium.com/@yuliaoletskaya/how-to-start-your-rails-app-in-a-docker-container-9f9ce29ff6d6).

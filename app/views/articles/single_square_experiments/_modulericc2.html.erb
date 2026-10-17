@@ -13,12 +13,13 @@
     full_paz = empty_image_path if obj.nil?
     #puts "[DEBUG] full_paz=#{full_paz} OBJ=#{obj}"
 %>
-<a href="/alphabet/letter/<%=letter %>%">
+<a href="/alphabet/letter/<%=letter %>">
 <div class="modulericc2" 
-    style="background: url('/assets/<%=full_paz%>'); background-size: 395px 395px;" >
+    style="background: url('/assets/<%=full_paz%>') center center / cover no-repeat;" >
+  <span class="letter-badge-overlay"><%= letter.to_s.upcase %></span>
 <header>
 <% if pri == sec %>
-    <h1>🇮🇹 🇬🇧 <%= pri %> 
+    <h1>🇮🇹 🇬🇧 <%= pri %></h1>
 <% else %>
     <h1>
         <!-- deprecated NOBR ma funge! https://stackoverflow.com/questions/7532826/can-i-stop-two-words-from-breaking-onto-separate-lines-and-creating-an-orphan -->
@@ -31,7 +32,7 @@
 
 </a>
   <% if defined? description %>
-    <span class"image-description" >
+    <span class="image-description" >
     File:
     <a href="/assets/<%=full_paz%>" ><tt class="image-description" ><%=description %></tt></a>
     </span>

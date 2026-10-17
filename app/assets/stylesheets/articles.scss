@@ -358,4 +358,25 @@ html {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
-  }
+}
+
+/* Semi-transparent letter badge overlay on top of images */
+.letter-badge-overlay {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  pointer-events: none;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}

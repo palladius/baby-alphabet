@@ -1,3 +1,6 @@
+2.10  2026-10-17 Modernized UI with semi-transparent letter watermark overlay (A/B/C), added static site generator
+                 (bin/generate_static_site.rb) + GitHub Actions workflow for GitHub Pages, fixed README typos and replaced
+                 palladi.us links with https://palladius.github.io/baby-alphabet/.
 2.03  2021-01-28 Ora che varz va a balus usiamo le /metrics di prometheus seguendo questo splendido documento 
                  https://www.robustperception.io/instrumenting-a-ruby-on-rails-application-with-prometheus 
 2.02  2021-01-28 /varz dovrebbe fare advertising delle metriche per prometheus..
