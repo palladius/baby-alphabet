@@ -586,14 +586,22 @@ index_html = <<~HTML
     const ITALIAN_LETTERS = ['A','B','C','D','E','F','G','H','I','L','M','N','O','P','Q','R','S','T','U','V','Z'];
     const UK_LETTERS = Array.from({length: 26}, (_, i) => String.fromCharCode(65 + i));
 
+    const params = new URLSearchParams(window.location.search);
     let catalog = null;
     let state = {
-      folder: 'vanilla',
-      lang: 'uk',
-      layout: 'landscape',
+      folder: ['vanilla', 'ajcarlesso', 'all'].includes(params.get('folder')) ? params.get('folder') : 'vanilla',
+      lang: ['uk', 'it'].includes(params.get('lang')) ? params.get('lang') : 'uk',
+      layout: ['landscape', 'portrait', 'square'].includes(params.get('layout')) ? params.get('layout') : 'landscape',
       cols: 4,
       seed: Date.now()
     };
+
+    function syncActiveButtons() {
+      document.querySelectorAll('#folderGroup button').forEach(b => b.classList.toggle('active', b.dataset.folder === state.folder));
+      document.querySelectorAll('#langGroup button').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+      document.querySelectorAll('#layoutGroup button').forEach(b => b.classList.toggle('active', b.dataset.layout === state.layout));
+    }
+    syncActiveButtons();
 
     function highlightInitial(word, letter) {
       if (!word) return '';
